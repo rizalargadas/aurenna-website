@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurenna AI • Tarot without the telenovela</title>
+  <meta name="description" content="Aurenna AI is your psychic best friend in app form — brutally honest, wildly specific tarot insights with zero fluff." />
+  <meta name="theme-color" content="#0A0B0D" />
+  <meta property="og:title" content="Aurenna AI — Your Psychic Bestie" />
+  <meta property="og:description" content="Frank, funny, and hyper-specific tarot insights. Cards don’t lie. Neither do we." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/src/img/app-screenshots/1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --void:#0A0B5D; /* slight blue tint for richer gradient */
+      --void-true:#0A0B0D;
+      --text:#C8D0E0;
+      --muted:#9FA8BA;
+      --violet:#6366F1;        /* Electric Violet */
+      --mystic:#1E2A4A;        /* Mystic Blue */
+      --indigo:#2D4263;        /* Ethereal Indigo */
+      --cosmic:#4A3B5C;        /* Cosmic Purple */
+      --amber:#F59E0B;         /* Amber Glow */
+      --crystal:#60A5FA;       /* Crystal Blue */
+      --stardust:#8B5CF6;      /* Stardust Purple */
+      --card:#11131A;
+      --ring: rgba(99,102,241,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+      --radius: 18px;
+      --radius-lg: 22px;
+      --maxw: 1180px;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      font-family:'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #0A0B0D 0%, #141922 25%, #1E2A4A 60%, #0A0B0D 100%);
+      min-height: 100vh;
+      line-height:1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .stars{position:fixed; inset:0; pointer-events:none; z-index:0;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 70% 10%, rgba(255,255,255,.3) 50%, transparent 51%),
+        radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.25) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 85% 60%, rgba(255,255,255,.28) 50%, transparent 51%),
+        radial-gradient(0.8px 0.8px at 15% 70%, rgba(255,255,255,.22) 50%, transparent 51%),
+        radial-gradient(1.3px 1.3px at 60% 40%, rgba(255,255,255,.26) 50%, transparent 51%),
+        radial-gradient(0.9px 0.9px at 90% 25%, rgba(255,255,255,.24) 50%, transparent 51%),
+        radial-gradient(1.1px 1.1px at 35% 15%, rgba(255,255,255,.27) 50%, transparent 51%);
+      background-size: 250% 250%;
+      animation:twinkle 8s ease-in-out infinite;
+    }
+    .stars::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 50%, rgba(147,197,253,.4) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 80% 70%, rgba(168,85,247,.35) 50%, transparent 51%),
+        radial-gradient(0.8px 0.8px at 50% 20%, rgba(251,146,60,.3) 50%, transparent 51%),
+        radial-gradient(1.1px 1.1px at 25% 85%, rgba(147,197,253,.38) 50%, transparent 51%);
+      background-size: 300% 300%;
+      animation: sparkle 12s linear infinite;
+    }
+    @keyframes twinkle{0%,100%{opacity:0.9; transform:translateY(0)} 50%{opacity:1; transform:translateY(-2px)}}
+    @keyframes sparkle{0%{background-position:0% 0%} 100%{background-position:100% 100%}}
+    .wrap{max-width:var(--maxw); margin:auto; padding: 24px 20px 80px; position:relative; z-index:1;}
+
+    /* Header */
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
+    .brand img{height:250px; width:auto}
+    .brand-name{font-family:'Cinzel', serif; font-weight:700; letter-spacing:.4px; color:#E6E9F4}
+    .nav{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .nav a{color:var(--text); text-decoration:none; font-weight:500; font-size:16px; opacity:.9}
+    .nav a:hover{color:#fff}
+    .cta{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; font-weight:700;
+      background: linear-gradient(135deg, var(--violet), var(--stardust)); color:white; text-decoration:none;
+      border:1px solid var(--ring); box-shadow: 0 8px 24px rgba(99,102,241,.35);
+    }
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns: 1.2fr .8fr; gap:30px; align-items:center; margin: 28px 0 32px}
+    .eyebrow{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border-radius:999px; background:transparent; border:1px solid rgba(99,102,241,.25); font-weight:600; font-size:13px}
+    h1.hero-title{font-family:'Cinzel', serif; margin:10px 0 8px; font-size: clamp(32px, 6vw, 56px); line-height:1.1; color:#EDEFF8; text-shadow: 0 2px 20px rgba(99,102,241,.22);}
+    .lead{color:var(--muted); font-size: clamp(16px, 2.8vw, 18px)}
+    .kpis{display:flex; gap:16px; flex-wrap:wrap; margin-top:16px}
+    .kpi{background: transparent; border:1px solid rgba(200,208,224,.12); padding:12px 14px; border-radius:14px}
+    .screenshot-card{
+      background: transparent; border:1px solid rgba(200,208,224,.1); border-radius: var(--radius-lg); box-shadow: 0 10px 30px rgba(0,0,0,.2); padding:10px; height: auto;
+    }
+    .screenshot-card .carousel {
+      height: auto;
+      aspect-ratio: 9/16;
+    }
+
+    /* Features */
+    .section{margin: 64px 0 20px}
+    h2.section-title{font-family:'Cinzel', serif; font-size: clamp(24px, 4vw, 34px); margin:0 0 6px; color:#E6E9F4}
+    .section-sub{color:var(--muted); margin:0 0 18px}
+    .features{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .feature{background: transparent; border:1px solid rgba(200,208,224,.12); padding:18px; border-radius:16px}
+    .feature h3{margin:6px 0 6px; color:#E6E9F4}
+    .feature p{margin:0}
+
+    /* Screenshot carousel */
+    .carousel{position:relative; overflow:hidden; border-radius: var(--radius-lg); border:1px solid rgba(200,208,224,.1); background: rgba(0,0,0,.2); box-shadow: var(--shadow); height: auto; aspect-ratio: 9/16;}
+    .track{display:flex; transition: transform .6s ease; will-change: transform}
+    .slide{min-width:100%; display:flex; align-items:center; justify-content:center; padding: 6px;}
+    .slide img{width:auto; max-width:100%; height:auto; max-height:100%; object-fit: contain; border-radius:14px; display:block}
+    .controls{display:flex; justify-content:center; gap:8px; margin-top:10px}
+    .dot{width:10px; height:10px; border-radius:50%; border:1px solid rgba(200,208,224,.4); background:transparent; cursor:pointer}
+    .dot.active{background: linear-gradient(135deg, var(--violet), var(--stardust)); border-color: transparent}
+
+    /* Reading types grid */
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .card{background: transparent; border:1px solid rgba(200,208,224,.12); padding:18px; border-radius:16px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid rgba(99,102,241,.25); background: transparent; font-weight:600; font-size:12px; letter-spacing:.2px}
+
+    /* Footer */
+    footer{margin-top:64px; padding:24px 0 60px; border-top:1px solid rgba(200,208,224,.10); color:var(--muted)}
+    .footgrid{display:grid; grid-template-columns: 1fr auto; gap:16px; align-items:center}
+    .footlinks{display:flex; gap:16px; flex-wrap:wrap}
+    .footlinks a{color:var(--muted); text-decoration:none}
+    .footlinks a:hover{color:#fff}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr}
+      .features, .grid{grid-template-columns: 1fr 1fr}
+      .screenshot-card{height: auto}
+      .screenshot-card .carousel, .carousel{aspect-ratio: 9/16}
+    }
+    @media (max-width: 620px){
+      .features, .grid{grid-template-columns: 1fr}
+      .nav{display:none}
+      .kpis{gap:10px; flex-direction: column}
+      .kpi{width: 100%}
+      .brand img{height: 90px}
+      .screenshot-card{height: auto; padding: 8px}
+      .screenshot-card .carousel, .carousel{aspect-ratio: 9/16}
+      .wrap{padding: 20px 16px 60px}
+      .topbar{padding: 8px 0}
+      .hero{gap: 20px; margin: 20px 0 24px}
+      .section{margin: 48px 0 16px}
+    }
+    @media (max-width: 480px){
+      .screenshot-card{height: auto; padding: 6px}
+      .screenshot-card .carousel, .carousel{aspect-ratio: 1/1}
+      h1.hero-title{font-size: 28px}
+      .lead{font-size: 16px}
+      .cta{padding: 8px 12px; font-size: 14px}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Aurenna AI",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Android",
+    "description": "Your psychic best friend in app form — brutally honest, wildly specific tarot insights.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="#top">
+        <img src="/src/img/horizontal-transparent.png" alt="Aurenna AI logo">
+        
+      </a>
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#readings">Reading Types</a>
+        <a href="#download">Download</a>
+      </nav>
+      <a class="cta" href="#" id="download-top">Get it on Google Play</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <span class="eyebrow">✨ Your psychic bestie • Real talk, real tarot</span>
+        <h1 class="hero-title">Tarot without the telenovela.<br/>Clarity you can act on.</h1>
+        <p class="lead">Aurenna blends ancient card wisdom with no‑BS modern talk. Get brutally honest, hyper‑specific guidance that feels like chismis with your wisest friend.</p>
+        <div class="kpis">
+          <div class="kpi">🔮 Brutally honest readings</div>
+          <div class="kpi">⚡ Fast, on‑device experience</div>
+          <div class="kpi">🃏 10+ spreads, free & premium</div>
+        </div>
+        <p style="margin-top:16px;">
+          <a class="cta" href="#" id="download-hero">Download on Google Play</a>
+        </p>
+      </div>
+      <div class="screenshot-card">
+        <div class="carousel" id="carousel">
+          <div class="track" id="track">
+            <div class="slide"><img src="/src/img/app-screenshots/1.jpg" alt="Aurenna AI app screenshot 1"></div>
+            <div class="slide"><img src="/src/img/app-screenshots/2.jpg" alt="Aurenna AI app screenshot 2"></div>
+            <div class="slide"><img src="/src/img/app-screenshots/3.jpg" alt="Aurenna AI app screenshot 3"></div>
+          </div>
+        </div>
+        <div class="controls" id="dots" aria-label="Screenshot carousel controls">
+          <button class="dot active" aria-label="Slide 1"></button>
+          <button class="dot" aria-label="Slide 2"></button>
+          <button class="dot" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <h2 class="section-title">Why you’ll vibe with Aurenna</h2>
+      <p class="section-sub">Frank insights, specific guidance, and a little cosmic wit — all wrapped in a clean, mystical UI.</p>
+      <div class="features">
+        <div class="feature">
+          <span class="pill">🧠 AI‑Powered</span>
+          <h3>Hyper‑specific insights</h3>
+          <p>No vague “the universe will provide” fluff. Get clear, direct interpretations for love, career, and life decisions.</p>
+        </div>
+        <div class="feature">
+          <span class="pill">🃏 78‑Card Deck</span>
+          <h3>Smart card draws</h3>
+          <p>Unique draws, position‑aware meanings, and a sprinkle of cosmic timing — with reversed cards when it matters.</p>
+        </div>
+        <div class="feature">
+          <span class="pill">🔐 Secure</span>
+          <h3>Your data, respected</h3>
+          <p>Supabase authentication, encrypted transit, and transparent controls. Tarot tea, minus the privacy drama.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- READING TYPES -->
+    <section class="section" id="readings">
+      <h2 class="section-title">Reading types</h2>
+      <p class="section-sub">From quick clarity to deep dives — pick a spread that fits your mood.</p>
+      
+      <div class="grid">
+        <div class="card">
+          <span class="pill">Premium • Love & Relationships</span>
+          <h3>Love Compatibility</h3>
+          <p>What’s real, what’s potential, what’s a red flag.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Premium • Love & Relationships</span>
+          <h3>Situation Spread</h3>
+          <p>Understand relationship dynamics and next steps.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Premium • Love & Relationships</span>
+          <h3>Relationship Decision</h3>
+          <p>Weigh your reasons to stay or move on — and get advice.</p>
+        </div>
+
+        <div class="card">
+          <span class="pill">Premium • Career & Growth</span>
+          <h3>Career Reading</h3>
+          <p>“Brutally honest bestie” advice for your professional path.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Premium • Career & Growth</span>
+          <h3>Career Change</h3>
+          <p>Guidance for making a confident career move.</p>
+        </div>
+
+        <div class="card">
+          <span class="pill">Premium • Spiritual & Mystical</span>
+          <h3>Past Life Reading</h3>
+          <p>Explore your soul’s journey through past incarnations.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Premium • Spiritual & Mystical</span>
+          <h3>Comprehensive General Reading</h3>
+          <p>Mind, body, spirit — plus family, money, love, and more.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Premium • Spiritual & Mystical</span>
+          <h3>Divine Timing Spread</h3>
+          <p>Gain insight into the universe’s timing for your life events.</p>
+        </div>
+
+        <div class="card">
+          <span class="pill">Premium • Quick Guidance</span>
+          <h3>Yes or No Reading</h3>
+          <p>Direct answers with context, not just a coin flip.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Premium • Quick Guidance</span>
+          <h3>Card of the Day</h3>
+          <p>Start your day with one card’s focused message.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Free • Quick Guidance</span>
+          <h3>Three‑Card Reading</h3>
+          <p>Quick, no‑nonsense Past • Present • Future guidance.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="section" id="download">
+      <h2 class="section-title">Get Aurenna on Google Play</h2>
+      <p class="section-sub">Join thousands finding clarity — even on a quick jeepney ride.</p>
+      <p><a class="cta" href="#" id="download-bottom">Open Google Play</a></p>
+      <p class="section-sub" style="margin-top:8px">No pressure. Try the free Three‑Card reading first.</p>
+    </section>
+
+    <footer>
+      <div class="footgrid">
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <img src="/src/img/horizontal-transparent.png" alt="Aurenna AI logo" style="height:24px">
+          <span>© <span id="year"></span> Foxare Digital</span>
+        </div>
+        <div class="footlinks">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="mailto:contact@aurenna.app">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple carousels
+    function makeCarousel(trackId, dotsId){
+      const track = document.getElementById(trackId);
+      const dots = Array.from(document.getElementById(dotsId).querySelectorAll('.dot'));
+      let index = 0;
+      function go(i){ index = i; track.style.transform = 'translateX(' + (-100*index) + '%)'; dots.forEach((d,k)=>d.classList.toggle('active', k===index)); }
+      dots.forEach((dot,i)=> dot.addEventListener('click', ()=>go(i)));
+      // Auto-advance
+      setInterval(()=> go((index+1)%dots.length), 5000);
+      go(0);
+    }
+    makeCarousel('track','dots');
+
+    // Google Play links placeholder - replace with your live Play link
+    const playUrl = '#'; // e.g., 'https://play.google.com/store/apps/details?id=com.yourapp'
+    ['download-top','download-hero','download-bottom'].forEach(id=>{
+      const el = document.getElementById(id);
+      el.setAttribute('href', playUrl);
+      el.addEventListener('click', (e)=>{
+        if(playUrl === '#'){ e.preventDefault(); alert('Play Store link coming soon!'); }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurenna AI • Privacy Policy</title>
+  <meta name="theme-color" content="#0A0B0D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --void:#0A0B0D;
+      --text:#C8D0E0;
+      --muted:#9FA8BA;
+      --violet:#6366F1;        /* Electric Violet */
+      --mystic:#1E2A4A;        /* Mystic Blue */
+      --indigo:#2D4263;        /* Ethereal Indigo */
+      --cosmic:#4A3B5C;        /* Cosmic Purple */
+      --amber:#F59E0B;         /* Amber Glow */
+      --crystal:#60A5FA;       /* Crystal Blue */
+      --stardust:#8B5CF6;      /* Stardust Purple */
+      --card:#11131A;
+      --ring: rgba(99,102,241,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background: linear-gradient(180deg, #0A0B0D 0%, #141922 25%, #1E2A4A 60%, #0A0B0D 100%);
+      min-height: 100vh;
+      line-height:1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .stars{
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 70% 10%, rgba(255,255,255,.3) 50%, transparent 51%),
+        radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.25) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 85% 60%, rgba(255,255,255,.28) 50%, transparent 51%),
+        radial-gradient(0.8px 0.8px at 15% 70%, rgba(255,255,255,.22) 50%, transparent 51%),
+        radial-gradient(1.3px 1.3px at 60% 40%, rgba(255,255,255,.26) 50%, transparent 51%),
+        radial-gradient(0.9px 0.9px at 90% 25%, rgba(255,255,255,.24) 50%, transparent 51%),
+        radial-gradient(1.1px 1.1px at 35% 15%, rgba(255,255,255,.27) 50%, transparent 51%);
+      background-size: 250% 250%;
+      animation: twinkle 8s ease-in-out infinite;
+    }
+    .stars::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 50%, rgba(147,197,253,.4) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 80% 70%, rgba(168,85,247,.35) 50%, transparent 51%),
+        radial-gradient(0.8px 0.8px at 50% 20%, rgba(251,146,60,.3) 50%, transparent 51%),
+        radial-gradient(1.1px 1.1px at 25% 85%, rgba(147,197,253,.38) 50%, transparent 51%);
+      background-size: 300% 300%;
+      animation: sparkle 12s linear infinite;
+    }
+    @keyframes twinkle{0%,100%{opacity:0.9; transform:translateY(0)} 50%{opacity:1; transform:translateY(-2px)}}
+    @keyframes sparkle{0%{background-position:0% 0%} 100%{background-position:100% 100%}}
+    .wrap{max-width: 920px; margin: auto; padding: 48px 20px 88px; position: relative; z-index: 1;}
+    header{
+      text-align:center; margin-bottom:28px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px; border-radius:999px;
+      background: linear-gradient(135deg, rgba(99,102,241,.18), rgba(139,92,246,.18));
+      border:1px solid rgba(99,102,241,.35);
+      color:var(--text); font-weight:500; letter-spacing:.15px; font-size:14px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+    h1{
+      font-family:'Cinzel', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height:1.2; margin:18px 0 8px;
+      letter-spacing:.4px;
+      color: #E6E9F4;
+      text-shadow: 0 2px 20px rgba(99,102,241,.22);
+    }
+    .subtitle{color:var(--muted); font-size:15px}
+    .card{
+      background: transparent;
+      border: 1px solid rgba(200,208,224,.12);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      overflow:hidden;
+    }
+    .hero{
+      padding: 26px 22px;
+      border-bottom:1px solid rgba(200,208,224,.07);
+      display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center;
+    }
+    .hero .left{display:flex; flex-direction:column; gap:6px}
+    .hero .title{font-size:18px; color:#EDEFF8; font-weight:600}
+    .hero .date{font-size:14px; color:var(--muted)}
+    .hero .cta{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border-radius:12px; font-weight:600;
+      background: linear-gradient(135deg, var(--violet), var(--stardust));
+      color:white; text-decoration:none; box-shadow: 0 8px 24px rgba(99,102,241,.35);
+      border: 1px solid var(--ring);
+    }
+    .content{padding: 8px 22px 28px}
+    h2{
+      font-family:'Cinzel', serif;
+      font-size: clamp(20px, 2.6vw, 26px);
+      margin:28px 0 10px; color:#E6E9F4;
+    }
+    h3{
+      font-weight:700; margin:18px 0 10px; color:#E6E9F4;
+    }
+    p{margin: 10px 0}
+    ul,ol{padding-left: 18px}
+    li{margin: 6px 0}
+    .toc{
+      margin:18px 0 8px; padding:14px; border-radius:14px;
+      background: rgba(30,42,74,.35);
+      border: 1px dashed rgba(200,208,224,.18);
+    }
+    .toc a{color: var(--crystal); text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+    a{color: var(--crystal)}
+    .note{
+      font-size:14px; color: var(--muted);
+    }
+    .foot{
+      padding:18px 22px;
+      border-top:1px solid rgba(200,208,224,.07);
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+    }
+    .chip{
+      padding:6px 10px; border-radius:999px; border:1px solid rgba(200,208,224,.12);
+      background: rgba(17,19,26,.6); color: var(--muted); font-size:12px
+    }
+    code.k{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 12px; background: rgba(200,208,224,.08); padding: 2px 6px; border-radius: 8px; border:1px solid rgba(200,208,224,.12)}
+    .divider{height:1px; background: linear-gradient(90deg, transparent, rgba(200,208,224,.12), transparent); margin:22px 0}
+    .legal{font-size:12px; color: var(--muted); margin-top: 6px}
+    @media (max-width:520px){
+      .hero{gap:10px}
+      .hero .cta{width:100%; justify-content:center}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="wrap">
+    <header>
+      <span class="badge">🔮 Aurenna AI • Privacy Policy</span>
+      <h1>Tarot without the telenovela — and without the shady data practices.</h1>
+      <p class="subtitle">We keep it frank, secure, and transparent. Here’s the tea on your data.</p>
+    </header>
+
+    <section class="card">
+      <div class="hero">
+        <div class="left">
+          <div class="title">Aurenna AI Tarot Reading App</div>
+          <div class="date">Effective Date: <strong>August 15, 2025</strong></div>
+          <div class="note">Foxare Digital • Bataan, Philippines</div>
+        </div>
+        <a class="cta" href="mailto:contact@aurenna.app" aria-label="Email Aurenna privacy team">Contact Support</a>
+      </div>
+
+      <div class="content">
+        <div class="toc">
+          <strong>Quick Jump:</strong>
+          <a href="#info-we-collect">Info We Collect</a> •
+          <a href="#how-we-use">How We Use It</a> •
+          <a href="#sharing">Sharing</a> •
+          <a href="#security">Security</a> •
+          <a href="#choices">Your Choices</a> •
+          <a href="#intl">International Transfers</a> •
+          <a href="#children">Children</a> •
+          <a href="#changes">Changes</a> •
+          <a href="#contact">Contact</a>
+        </div>
+
+        <p>Aurenna AI (“we,” “our,” “us”) respects your privacy and is committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you use the <strong>Aurenna AI Tarot Reading</strong> mobile application (the “App”).</p>
+
+        <h2 id="info-we-collect">1) Information We Collect</h2>
+        <h3>a) Information You Provide</h3>
+        <ul>
+          <li><strong>Account Info:</strong> Email address and password when you sign up or log in.</li>
+          <li><strong>Subscription &amp; Payment:</strong> Processed via trusted third parties (e.g., Google Play Billing, PayPal). We don’t store full payment details.</li>
+          <li><strong>Reading History:</strong> Your tarot spreads and AI-generated interpretations tied to your account.</li>
+        </ul>
+
+        <h3>b) Information Collected Automatically</h3>
+        <ul>
+          <li><strong>Device Data:</strong> Device model, OS version, and identifiers.</li>
+          <li><strong>Usage &amp; Diagnostics:</strong> Feature usage, performance, and error logs to keep things smooth.</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h2 id="how-we-use">2) How We Use Your Information</h2>
+        <ol>
+          <li>Provide, maintain, and improve App features and performance.</li>
+          <li>Authenticate users and manage accounts.</li>
+          <li>Generate AI-powered readings and save your reading history.</li>
+          <li>Process premium subscriptions and entitlements.</li>
+          <li>Send service updates and important notices.</li>
+          <li>Detect, prevent, and address fraud, abuse, or technical issues.</li>
+        </ol>
+
+        <h2 id="sharing">3) How We Share Information</h2>
+        <p>We <strong>don’t sell</strong> your personal data. We only share it when necessary:</p>
+        <ul>
+          <li><strong>Service Providers:</strong> <em>Supabase</em> (authentication and data storage), <em>OpenAI</em> (AI reading generation), and payment partners (e.g., Google Play Billing, PayPal) to run the App.</li>
+          <li><strong>Legal &amp; Safety:</strong> When required by law or to protect rights and safety.</li>
+          <li><strong>Business Transfers:</strong> If we’re part of a merger, acquisition, or asset sale.</li>
+        </ul>
+
+        <h2 id="security">4) Data Security</h2>
+        <p>We use encryption and secure protocols to protect data in transit and at rest. While we work hard to safeguard your information, no method of transmission or storage is 100% secure.</p>
+
+        <h2 id="choices">5) Your Privacy Choices</h2>
+        <ul>
+          <li><strong>Access &amp; Update:</strong> Manage your account details in-app.</li>
+          <li><strong>Delete Account/Data:</strong> Email <a href="mailto:contact@aurenna.app">contact@aurenna.app</a> with the subject <code class="k">Delete My Account</code>.</li>
+          <li><strong>Opt-Out:</strong> You may disable optional analytics via device settings where available.</li>
+        </ul>
+
+        <h2 id="intl">6) International Data Transfers</h2>
+        <p>Your data may be processed and stored on servers outside your country. By using the App, you consent to these transfers as outlined here.</p>
+
+        <h2 id="children">7) Children’s Privacy</h2>
+        <p>The App isn’t directed to children under 13, and we don’t knowingly collect their data. If we learn we’ve received such data, we’ll delete it.</p>
+
+        <h2 id="changes">8) Changes to This Policy</h2>
+        <p>We may update this Privacy Policy periodically. We’ll post the latest version here and update the “Effective Date.”</p>
+
+        <h2 id="contact">9) Contact Us</h2>
+        <p>Questions or requests? Reach out:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:contact@aurenna.app">contact@aurenna.app</a></li>
+          <li><strong>Developer Name:</strong> Foxare Digital</li>
+          <li><strong>Address:</strong> Bataan, Philippines</li>
+        </ul>
+
+        <p class="legal">This policy applies only to the Aurenna AI Tarot Reading App. Additional terms may apply as stated in our End User License Agreement (EULA) and in-app notices.</p>
+      </div>
+
+      <div class="foot">
+        <span class="chip">🔒 We respect your privacy</span>
+        <span class="chip">✨ Straight talk, no fluff</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
