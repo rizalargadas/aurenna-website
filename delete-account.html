@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurenna AI • Delete Account</title>
+  <meta name="theme-color" content="#0A0B0D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --void:#0A0B0D;      /* Void Black */
+      --mystic:#1E2A4A;    /* Mystic Blue */
+      --text:#C8D0E0;      /* Silver Mist */
+      --muted:#9FA8BA;
+      --violet:#6366F1;    /* Electric Violet */
+      --stardust:#8B5CF6;  /* Stardust Purple */
+      --ring: rgba(99,102,241,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+      --radius:18px;
+      --maxw:860px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      font-family:'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--void) 0%, var(--mystic) 100%);
+      line-height:1.7;
+    }
+    .wrap{max-width:var(--maxw); margin:auto; padding: 36px 20px 72px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:20px}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
+    .brand img{height:250px}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); font-weight:600; font-size:12px}
+    h1{font-family:'Cinzel', serif; color:#EDEFF8; margin:10px 0 4px; font-size: clamp(26px,4.8vw,40px); letter-spacing:.3px}
+    .card{background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); border-radius: var(--radius); box-shadow: var(--shadow); padding:18px 18px}
+    .cta{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700; text-decoration:none;
+      background: linear-gradient(135deg, var(--violet), var(--stardust)); color:white; border:1px solid var(--ring); box-shadow: 0 8px 24px rgba(99,102,241,.35);
+    }
+    ul{margin:8px 0 0 22px}
+    .section{margin:22px 0}
+    footer{margin-top:30px; border-top:1px solid rgba(255,255,255,.10); padding-top:16px; color:var(--muted); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    a{color:#60A5FA}
+    .note{color:var(--muted)}
+    .divider{height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent); margin:18px 0}
+    .small{font-size:13px}
+    .center{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/">
+        <img src="/src/img/horizontal-transparent.png" alt="Aurenna AI logo">
+      </a>
+      <span class="badge">Account & Privacy</span>
+    </header>
+
+    <h1>Delete your Aurenna AI account</h1>
+    <p class="note">We’re sorry to see you go. Follow the steps below to permanently delete your account and associated data.</p>
+
+    <section class="card section">
+      <h2 class="small">How to request deletion</h2>
+      <ol>
+        <li>Send us an email from the address linked to your Aurenna account.</li>
+        <li>Use the subject line <strong>“Delete My Account”</strong> and include: your name (optional) and a brief confirmation that you want your account deleted.</li>
+        <li>We’ll verify ownership and process your request within <strong>7 days</strong>.</li>
+      </ol>
+      <p style="margin-top:10px">
+        <a class="cta" id="mailto" href="mailto:contact@aurenna.app?subject=Delete%20My%20Account&body=Please%20delete%20my%20Aurenna%20AI%20account%20and%20all%20associated%20data.%0A%0AAccount%20email:%20%3Cyour-email-here%3E%0AOptional%20note:%20%3Cany%20additional%20details%3E%0A%0AThank%20you.">Email request to contact@aurenna.app</a>
+      </p>
+      <p class="note small">If you can’t access the original email address, email us and we’ll guide you through alternate verification.</p>
+      <div class="divider"></div>
+      <h2 class="small">What gets deleted</h2>
+      <ul>
+        <li>Profile information (email, display name)</li>
+        <li>Saved tarot reading history and spreads</li>
+        <li>Subscription entitlements attached to your account (if any)</li>
+      </ul>
+      <h2 class="small" style="margin-top:12px">What we may retain</h2>
+      <ul>
+        <li>Payment transaction records required for tax, accounting, or fraud prevention (retained for up to 12 months)</li>
+        <li>System logs needed to maintain the security and integrity of our services</li>
+      </ul>
+      <p class="note small">All retained data is stored securely and only for the purposes listed above.</p>
+    </section>
+
+    <section class="section">
+      <div class="center">
+        <a href="/privacy.html">Privacy Policy</a> •
+        <a href="/terms.html">Terms</a> •
+        <a href="mailto:contact@aurenna.app">contact@aurenna.app</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="center">
+        <img src="/src/img/horizontal-transparent.png" alt="Aurenna AI logo" style="height:20px">
+        <span>© <span id="year"></span> Foxare Digital</span>
+      </div>
+      <div class="small">Bataan, Philippines</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
